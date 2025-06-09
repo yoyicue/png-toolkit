@@ -717,17 +717,17 @@ mod tests {
     #[test]
     fn test_transparent_to_white_conversion() {
         // 创建一个测试图片
-        let mut img = ImageBuffer::new(2, 2);
+        let mut img = ImageBuffer::<Rgba<u8>, Vec<u8>>::new(2, 2);
         
         // 设置像素：
         // (0,0): 完全透明的红色
         // (0,1): 半透明的绿色
         // (1,0): 不透明的蓝色
         // (1,1): 完全透明
-        img.put_pixel(0, 0, Rgba([255, 0, 0, 0]));
-        img.put_pixel(0, 1, Rgba([0, 255, 0, 128]));
-        img.put_pixel(1, 0, Rgba([0, 0, 255, 255]));
-        img.put_pixel(1, 1, Rgba([0, 0, 0, 0]));
+        img.put_pixel(0, 0, Rgba([255u8, 0u8, 0u8, 0u8]));
+        img.put_pixel(0, 1, Rgba([0u8, 255u8, 0u8, 128u8]));
+        img.put_pixel(1, 0, Rgba([0u8, 0u8, 255u8, 255u8]));
+        img.put_pixel(1, 1, Rgba([0u8, 0u8, 0u8, 0u8]));
         
         // 保存测试输入
         let test_input = "test_input.png";
@@ -742,7 +742,7 @@ mod tests {
         
         // 验证结果
         assert_eq!(*result.get_pixel(0, 0), Rgba([255, 255, 255, 255])); // 完全白色
-        assert_eq!(*result.get_pixel(0, 1), Rgba([127, 255, 127, 255])); // 混合后的颜色
+        assert_eq!(*result.get_pixel(0, 1), Rgba([126, 255, 126, 255])); // 混合后的颜色 (128/255 * 0 + 255 * (1 - 128/255))
         assert_eq!(*result.get_pixel(1, 0), Rgba([0, 0, 255, 255]));     // 蓝色不变
         assert_eq!(*result.get_pixel(1, 1), Rgba([255, 255, 255, 255])); // 完全白色
         
