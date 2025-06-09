@@ -5,7 +5,7 @@ edition = "2021"
 
 [[bin]]
 name = "png_converter"
-path = "src/main.rs"
+path = "src/png_converter.rs"
 
 [[bin]]
 name = "png_filter"
