@@ -3,6 +3,14 @@ name = "png-transparent-to-white"
 version = "0.1.0"
 edition = "2021"
 
+[[bin]]
+name = "png_converter"
+path = "src/main.rs"
+
+[[bin]]
+name = "png_filter"
+path = "src/png_filter.rs"
+
 [dependencies]
 image = "0.24"
 rayon = "1.8"
@@ -12,8 +20,10 @@ num_cpus = "1.16"
 wgpu = "0.19"
 pollster = "0.3"
 bytemuck = { version = "1.14", features = ["derive"] }
-tokio = { version = "1.0", features = ["rt", "rt-multi-thread"] }
 futures-intrusive = "0.5"
+
+[dev-dependencies]
+tempfile = "3.8"
 
 [profile.release]
 opt-level = 3
