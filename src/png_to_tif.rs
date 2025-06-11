@@ -449,7 +449,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 mod tests {
     use super::*;
     use tempfile::tempdir;
-    use std::fs;
 
     #[test]
     fn test_png_to_tif_conversion() {
